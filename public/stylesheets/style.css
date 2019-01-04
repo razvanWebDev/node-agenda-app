@@ -6,3 +6,14 @@ body {
 a {
   color: #00B7FF;
 }
+
+#contacts table {
+  
+  border-collapse: collapse;
+}
+
+#contacts table td {
+  border: 1px solid black;
+  padding: 5px 15px 5px 15px;
+  text-align: center;
+} 
