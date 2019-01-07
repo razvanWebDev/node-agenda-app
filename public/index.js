@@ -1,19 +1,18 @@
-function displayAgenda(agenda) {
-    var resultTable = document.querySelector('#contacts tbody');
+function displayAgenda(contacts) {
+    var resultTable = document.querySelector('#agenda tbody');
 
-    var contacts = agenda.map(function (agenda) {
+    var contact = contacts.map(function (contact) {
         return `<tr>
-                    <td>${agenda.firstName}</td> <td>${agenda.lastName}</td> <td>${agenda.phoneNr}</td>
+                    <td>${contact.firstName}</td> <td>${contact.lastName}</td> <td>${contact.phoneNr}</td>
                 </tr>`
     })
-    resultTable.innerHTML = contacts.join("");
+    resultTable.innerHTML = contact.join("");
 }
 
 function initAgenda() {
-    $.ajax('agenda.json').done(function (agenda) {
-        displayAgenda(agenda);
+    $.ajax('contacts.json').done(function (contacts) {
+        displayAgenda(contacts);
     })
 }
-
 
 initAgenda();
