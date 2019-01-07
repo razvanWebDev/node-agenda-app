@@ -1,5 +1,5 @@
 function displayAgenda(agenda) {
-    var resultTable = document.querySelector('#contacts table');
+    var resultTable = document.querySelector('#contacts tbody');
 
     var contacts = agenda.map(function (agenda) {
         return `<tr>

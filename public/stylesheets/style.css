@@ -7,13 +7,20 @@ a {
   color: #00B7FF;
 }
 
-#contacts table {
-  
+#contacts {
   border-collapse: collapse;
+  width: 100%;
+}
+ #contacts th, td {
+  text-align: left;
+  padding: 8px;
+ }
+
+ #contacts tr:nth-child(even){background-color: #f2f2f2}
+ #contacts th {
+    background-color: #00aeef;
+    color: white;
 }
 
-#contacts table td {
-  border: 1px solid black;
-  padding: 5px 15px 5px 15px;
-  text-align: center;
-} 
+
+
