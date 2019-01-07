@@ -1,18 +1,21 @@
-function displayAgenda(contacts) {
+function displayContacts(contacts) {
     var resultTable = document.querySelector('#agenda tbody');
 
-    var contact = contacts.map(function (contact) {
+    var rows = contacts.map(function (contact) {
         return `<tr>
-                    <td>${contact.firstName}</td> <td>${contact.lastName}</td> <td>${contact.phoneNr}</td>
+                    <td>${contact.firstName}</td>
+                    <td>${contact.lastName}</td>
+                    <td>${contact.phoneNr}</td>
+                    <td><a href = "contacts.json?delete = ${contact.phoneNr} "> x </a></td>
                 </tr>`
     })
-    resultTable.innerHTML = contact.join("");
+    resultTable.innerHTML = rows.join("");
 }
 
-function initAgenda() {
+function loadContacts() {
     $.ajax('contacts.json').done(function (contacts) {
-        displayAgenda(contacts);
+        displayContacts(contacts);
     })
 }
 
-initAgenda();
+loadContacts();

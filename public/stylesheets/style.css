@@ -1,3 +1,4 @@
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -7,6 +8,24 @@ a {
   color: #00B7FF;
 }
 
+/* form styles */
+#contact-form {
+  margin-top: 5px;
+}
+
+#contact-form input {
+  width: 40%;
+}
+
+#contact-form button {
+  min-width: 50px;
+}
+
+#contact-form .save {
+  display: none;
+}
+
+/* list style */
 #agenda {
   border-collapse: collapse;
   width: 100%;
