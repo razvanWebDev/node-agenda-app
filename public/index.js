@@ -5,8 +5,8 @@ function displayContacts(contacts) {
         return `<tr>
                     <td>${contact.firstName}</td>
                     <td>${contact.lastName}</td>
-                    <td>${contact.phoneNr}</td>
-                    <td><a href = "contacts.json?delete = ${contact.phoneNr} "> x </a></td>
+                    <td>${contact.phone}</td>
+                    <td><a href="/contacts/delete?phone=${contact.phone}">delete</a></td>
                 </tr>`
     })
     resultTable.innerHTML = rows.join("");

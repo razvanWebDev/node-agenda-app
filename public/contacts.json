@@ -1,17 +1,17 @@
-[
-    {
-        "firstName": "Razvan",
-        "lastName": "Crisan",
-        "phoneNr": "0755962057"
-    },
-    {
-        "firstName": "Luminita",
-        "lastName": "Crisan",
-        "phoneNr": "0786250563"
-    },
-    {
-        "firstName": "First Name",
-        "lastName": "Last Name",
-        "phoneNr": "Phone Number"
-    }
+[{
+    "firstName": "Crisan", 
+    "lastName": "Razvan",
+    "phone": "0755962057"
+},
+{
+    "firstName": "Luminita", 
+    "lastName": "Crisan",
+    "phone": "0755900057"
+},
+{
+    "firstName": "name", 
+    "lastName": "lnamean",
+    "phone": "0755962057"
+}
+
 ]
