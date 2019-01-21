@@ -6,8 +6,9 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
+
+// /contacts/delete?phone=1234
 router.get('/delete', function(req, res, next) {
-  var phoneToRemove = req.query.phone;
   var phone = req.query.phone;
 
   var fs = require('fs');
@@ -20,10 +21,11 @@ router.get('/delete', function(req, res, next) {
   });
 
  content = JSON.stringify(remainingContacts, null, 2);
-  fs.writeFileSync('public/contacts.json' , remainingContacts);
+  fs.writeFileSync('public/contacts.json' , content);
 
-  res.send(remainingContacts);
+  // res.json({success: true});
 
+  res.redirect('/agenda.html');
   
 });
 module.exports = router;
