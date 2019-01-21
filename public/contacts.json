@@ -1,17 +1,17 @@
-[{
-    "firstName": "Crisan", 
-    "lastName": "Razvan",
-    "phone": "0755962057"
-},
-{
-    "firstName": "Luminita", 
+[
+  {
+    "firstName": "Luminita",
     "lastName": "Crisan",
     "phone": "0755900057"
-},
-{
-    "firstName": "name", 
+  },
+  {
+    "firstName": "name",
     "lastName": "lnamean",
     "phone": "07559620057"
-}
-
+  },
+  {
+    "firstName": "Razvan",
+    "lastName": "Crisan",
+    "phone": "755962057"
+  }
 ]
