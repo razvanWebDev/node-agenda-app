@@ -36,7 +36,7 @@ function saveContact() {
         lastName,
         phone: phone // ES5 (key = value)
     }).done(function (response) {
-        
+
         phoneToEdit = '';
         if (response.success) {
             loadContacts();
@@ -46,7 +46,7 @@ function saveContact() {
 
 function displayContacts(contacts) {
     var rows = contacts.map(function (contact) {
-        
+
         return `<tr>
             <td>${contact.firstName}</td>
             <td>${contact.lastName}</td>
@@ -57,7 +57,7 @@ function displayContacts(contacts) {
             </td>
         </tr>`;
     });
-    
+
 
     //rows.push(getNewRow()); // simplified
     var actions = getNewRow();
@@ -88,10 +88,12 @@ function initEvents() {
 function dosearch() {
     var value = this.value.toLowerCase();
 
-    var filteredContacts = globalContacts.filter(function(contact){
-        return contact.firstName.toLowerCase().includes(value);
+    var filteredContacts = globalContacts.filter(function (contact) {
+        return contact.firstName.toLowerCase().includes(value) ||
+            contact.lastName.toLowerCase().includes(value) ||
+            contact.phone.toLowerCase().includes(value);
     });
-    
+
     displayContacts(filteredContacts);
 
 }
