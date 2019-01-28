@@ -2,17 +2,7 @@ var phoneToEdit = '';
 
 
 
-function dosearch() {
-    var value = this.value;
-    console.log(value);
 
-
-    var contacts = window.globalContacts;
-    contacts.filter(function() {
-        return contacts.firstName == value;
-    });
-
-}
 
 function loadContacts() {
     $.ajax('data/contacts.json').done(function (contacts) {
@@ -93,6 +83,20 @@ function initEvents() {
 
     document.getElementById('search').addEventListener("input", dosearch);
 
+}
+
+function dosearch() {
+    var value = this.value;
+    console.log(value);
+
+    var filteredContacts = globalContacts.filter(function(contact){
+        return contact.firstName == value;
+    });
+    
+
+    displayContacts(filteredContacts);
+
+    
 
 }
 
