@@ -1,8 +1,22 @@
 var phoneToEdit = '';
 
+
+
+function dosearch() {
+    var value = this.value;
+    console.log(value);
+
+
+    var contacts = window.globalContacts;
+    contacts.filter(function() {
+        return contacts.firstName == value;
+    });
+
+}
+
 function loadContacts() {
-    $.ajax('data/contacts.json').done(function(contacts){
-        console.info('contacts loaded', contacts);
+    $.ajax('data/contacts.json').done(function (contacts) {
+
         window.globalContacts = contacts;
         displayContacts(contacts);
     });
@@ -22,17 +36,17 @@ function saveContact() {
     var lastName = $('input[name=lastName]').val();
     var phone = $('input[name=phone]').val();
     console.debug('saveContact...', firstName, lastName, phone);
-    
+
     // var actionUrl = '';
     // if (phoneToEdit){ actionUrl = 'contacts/update' } else {actionUrl = 'contacts/create'}
     var actionUrl = phoneToEdit ? 'contacts/update?phone=' + phoneToEdit : 'contacts/create';
-    
+
     $.post(actionUrl, {
         firstName, // shortcut from ES6 (key is the same as value variable name)
         lastName,
         phone: phone // ES5 (key = value)
-    }).done(function(response){
-        console.warn('done create contact', response);
+    }).done(function (response) {
+        
         phoneToEdit = '';
         if (response.success) {
             loadContacts();
@@ -41,8 +55,8 @@ function saveContact() {
 }
 
 function displayContacts(contacts) {
-    var rows = contacts.map(function(contact) {
-        console.log('transform contact', contact);
+    var rows = contacts.map(function (contact) {
+        
         return `<tr>
             <td>${contact.firstName}</td>
             <td>${contact.lastName}</td>
@@ -53,8 +67,8 @@ function displayContacts(contacts) {
             </td>
         </tr>`;
     });
-    console.warn('rows', rows);
     
+
     //rows.push(getNewRow()); // simplified
     var actions = getNewRow();
     rows.push(actions);
@@ -64,18 +78,22 @@ function displayContacts(contacts) {
 
 function initEvents() {
     // TODO use native click
-    $("tbody").delegate( "a.edit", "click", function() {
+    $("tbody").delegate("a.edit", "click", function () {
         phoneToEdit = this.getAttribute('data-id');
 
-        var contact = globalContacts.find(function(contact){
+        var contact = globalContacts.find(function (contact) {
             return contact.phone == phoneToEdit;
         });
         console.log('edit', phoneToEdit, contact);
-        
+
         document.querySelector('input[name=firstName]').value = contact.firstName;
         $('input[name=lastName]').val(contact.lastName);
         $('input[name=phone]').val(contact.phone);
     });
+
+    document.getElementById('search').addEventListener("input", dosearch);
+
+
 }
 
 // - start app

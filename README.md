@@ -2,12 +2,12 @@
 
 A simple app using node & express for managing phone books
 
-## Contebt
+## Content
 - **CRUD** operations:
     - **C**reate new contact
-    - **R**ead contacts from[contact.json](puvlic/data/contacts.json)
+    - **R**ead contacts from [contacts.json](public/data/contacts.json)
     file
-    - **U**dpate contacts
+    - **U**pdate contacts
     - **D**elete contact
 - Search contact
 
