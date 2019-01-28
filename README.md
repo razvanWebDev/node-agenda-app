@@ -2,6 +2,15 @@
 
 A simple app using node & express for managing phone books
 
+## Contebt
+- **CRUD** operations:
+    - **C**reate new contact
+    - **R**ead contacts from[contact.json](puvlic/data/contacts.json)
+    file
+    - **U**dpate contacts
+    - **D**elete contact
+- Search contact
+
 ## Setup node.modules
 
 ```
