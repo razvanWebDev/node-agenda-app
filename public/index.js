@@ -86,17 +86,13 @@ function initEvents() {
 }
 
 function dosearch() {
-    var value = this.value;
-    console.log(value);
+    var value = this.value.toLowerCase();
 
     var filteredContacts = globalContacts.filter(function(contact){
-        return contact.firstName == value;
+        return contact.firstName.toLowerCase().includes(value);
     });
     
-
     displayContacts(filteredContacts);
-
-    
 
 }
 
