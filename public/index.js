@@ -25,10 +25,8 @@ function saveContact() {
     var firstName = document.querySelector('input[name=firstName]').value;
     var lastName = $('input[name=lastName]').val();
     var phone = $('input[name=phone]').val();
-    console.debug('saveContact...', firstName, lastName, phone);
+   
 
-    // var actionUrl = '';
-    // if (phoneToEdit){ actionUrl = 'contacts/update' } else {actionUrl = 'contacts/create'}
     var actionUrl = phoneToEdit ? 'contacts/update?phone=' + phoneToEdit : 'contacts/create';
 
     $.post(actionUrl, {
