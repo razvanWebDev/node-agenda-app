@@ -2,6 +2,10 @@
 
 A simple app using node & express for managing phone books
 
+## Live preview
+
+Open [agenda.html]https://crsnrazvan84.github.io/node-agenda-app/public/agenda.html
+
 ## Content
 - **CRUD** operations:
     - **C**reate new contact
