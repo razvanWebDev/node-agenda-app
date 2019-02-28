@@ -8,8 +8,8 @@ var API_URL = {
 
 }
 
-if(location.hots === "github.com"){
-    API_URL.READ = "data/contacts/json";
+if(location.hots === "Crsnrazvan84.github.io"){
+    API_URL.READ = "data/contacts.json";
 }
 
 function loadContacts() {
