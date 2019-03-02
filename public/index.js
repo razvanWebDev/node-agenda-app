@@ -5,15 +5,14 @@ var API_URL = {
     READ: "contacts",
     UPDATE: "contacts/update",
     DELETE:"contacts/delete",
+};
 
-}
-
-if(location.hots === "Crsnrazvan84.github.io"){
+//if we are on demo site
+if(location.host === "crsnrazvan84.github.io"){
     API_URL.READ = "data/contacts.json";
 }
 
 function loadContacts() {
-    
     $.ajax(API_URL.READ).done(function (contacts) {
 
         window.globalContacts = contacts;
@@ -27,7 +26,7 @@ function saveContact() {
     var phone = $('input[name=phone]').val();
    
 
-    var actionUrl = phoneToEdit ? API_URL.UPDATE +  '?id=' + phoneToEdit : API_URL.CREATE;
+    var actionUrl = phoneToEdit ? API_URL.UPDATE + '?id=' + phoneToEdit : API_URL.CREATE;
 
     $.post(actionUrl, {
         firstName, // shortcut from ES6 (key is the same as value variable name)
