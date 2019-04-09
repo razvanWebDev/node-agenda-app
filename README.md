@@ -15,7 +15,32 @@ Open [agenda.html](https://crsnrazvan84.github.io/node-agenda-app/public/agenda.
     - **D**elete contact
 - Search contact
 
-## Setup node.modules
+## Main links
+
+ - [Express Nodejs](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/skeleton_website)
+ - [Read & Write json files](http://stackabuse.com/reading-and-writing-json-files-with-node-js/)
+
+## Steps to configure (1st time)
+
+```
+npm install express-generator -g
+express --view=hbs node-agenda-app
+cd node-agenda-app
+npm install --save-dev nodemon
+npm install cors --save
+npm install
+```
+
+### Enable nodemon
+Edit **package.json** and add next lines:
+```
+"scripts": {
+    "start": "node ./bin/www",
+    "devstart": "nodemon ./bin/www"
+}
+```
+
+## Setup node.modules (on a new PC)
 
 ```
 git clone https://github.com/Crsnrazvan84/node-agenda-app.git
