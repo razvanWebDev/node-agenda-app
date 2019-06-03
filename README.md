@@ -4,7 +4,7 @@ A simple app using node & express for managing phone books
 
 ## Live preview
 
-Open [agenda.html](https://razvanwebdeveloper.github.io/node-agenda-app/public/agenda.html)
+Open [agenda.html](https://razvanwebdev.github.io/node-agenda-app/public/agenda.html)
 
 ## Content
 - **CRUD** operations:
@@ -43,7 +43,7 @@ Edit **package.json** and add next lines:
 ## Setup node.modules (on a new PC)
 
 ```
-git clone https://github.com/razvanwebdeveloper/node-agenda-app.git
+git clone https://github.com/razvanwebdev/node-agenda-app.git
 cd node-agenda-app
 npm install
 ```
