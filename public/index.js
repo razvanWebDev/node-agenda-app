@@ -8,7 +8,7 @@ var API_URL = {
 };
 
 //if we are on demo site
-if(location.host === "crsnrazvan84.github.io"){
+if(location.host === "razvanwebdev.github.io"){
     API_URL.READ = "data/contacts.json";
 }
 
