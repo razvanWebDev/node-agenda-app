@@ -1,16 +1,23 @@
 var phoneToEdit = '';
 
+// var API_URL = {
+//     CREATE: "contacts/create",
+//     READ: "contacts",
+//     UPDATE: "contacts/update",
+//     DELETE:"contacts/delete",
+// };
+
+// //if we are on demo site
+// if(location.host === "razvanwebdev.github.io"){
+//     API_URL.READ = "data/contacts.json";
+// }
+
 var API_URL = {
     CREATE: "contacts/create",
-    READ: "contacts",
+    READ: "data/contacts.json",
     UPDATE: "contacts/update",
     DELETE:"contacts/delete",
 };
-
-//if we are on demo site
-if(location.host === "razvanwebdev.github.io"){
-    API_URL.READ = "data/contacts.json";
-}
 
 function loadContacts() {
     $.ajax(API_URL.READ).done(function (contacts) {
