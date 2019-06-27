@@ -5,9 +5,9 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   color:  #F4F4F4;
   background-color: #3E3C48;
-  background-image: url('../img/background.jpg');
+  background-image:linear-gradient(147deg, rgba(23, 116, 149, 0.1) 0%, rgba(56, 208, 168, 0.1) 100%), url('../img/background.jpg') ;
   background-size: cover;
-  background-position-y: 10%; 
+  background-position-y: 5%; 
 
 }
 
@@ -16,27 +16,11 @@ body, html {
 }
 
 a {
-  color: #177495;
+  color: #F4F4F4 ;
 }
 
 
 
-/* form styles */
-#contact-form {
-  margin-top: 5px;
-}
-
-#contact-form input {
-  width: 40%;
-}
-
-#contact-form button {
-  min-width: 50px;
-}
-
-#contact-form .save {
-  display: none;
-}
 
 /* list style */
 #agenda {
@@ -45,14 +29,25 @@ a {
 }
  #agenda th, td {
   text-align: left;
-  padding: 8px;
+  padding: 10px;
  }
 
- #agenda tr:nth-child(even){background-color: #f2f2f2}
+ #agenda th:last-of-type {
+   width: 30px;
+ }
+
+ #agenda tr {
+   background-color: rgb(34, 164, 156);
+ }
+
+ #agenda tr:nth-child(even){
+   background-color: rgb(56, 208, 168);
+  }
+
  #agenda th {
-    background-color: #00aeef;
-    color: white;
-}
+    background-color: rgb(23, 116, 149);
+    color: #F4F4F4;
+  }
 
 
 
