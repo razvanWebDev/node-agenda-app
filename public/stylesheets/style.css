@@ -80,5 +80,9 @@ button:hover {
     color: #F4F4F4;
   }
 
+  #agenda tfoot tr {
+    background-color: rgb(23, 116, 149);
+  }
+
 
 
