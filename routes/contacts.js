@@ -9,13 +9,13 @@ router.get('/', function(req, res, next) {
 
 // /contacts/delete?phone=1234
 router.get('/delete', function(req, res, next) {
-  var phone = req.query.phone;
+  var phoneToRemove = req.query.phone;
 
   var content = fs.readFileSync('public/data/contacts.json');
   var contacts = JSON.parse(content);
 
   var remainingContacts = contacts.filter(function(contact){
-    return contact.phone != phone;
+    return contact.phone != phoneToRemove;
   });
 
   content = JSON.stringify(remainingContacts, null, 2);

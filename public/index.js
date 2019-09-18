@@ -56,8 +56,8 @@ function displayContacts(contacts) {
             <td>${contact.lastName}</td>
             <td>${contact.phone}</td>
             <td>
-            <a href="${API_URL.DELETE}?id=${contact.id}">&#10006;</a>
-                <a href="#" class="edit" data-id="${contact.id}">&#9998;</a>
+            <a href="contacts/delete?phone=${contact.phone}">&#10006;</a>
+                <a href="#" class="edit" data-id="${contact.phone}">&#9998;</a>
             </td>
         </tr>`;
     });
