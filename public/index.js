@@ -54,6 +54,7 @@ function saveContact() {
         phone_input.style.border = "none";
     }
 
+
     var actionUrl = phoneToEdit
         ? API_URL.UPDATE + "?id=" + phoneToEdit
         : API_URL.CREATE;
@@ -65,8 +66,8 @@ function saveContact() {
     }).done(function(response) {
         phoneToEdit = "";
         firstName_input.value = "";
-        lastName = "";
-        phone = "";
+        lastName_input.value = "";
+        phone_input.value = "";
 
         if (response.success) {
             loadContacts();
