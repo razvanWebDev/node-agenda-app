@@ -54,10 +54,9 @@ function saveContact() {
         phone_input.style.border = "none";
     }
 
-
     var actionUrl = phoneToEdit
-        ? API_URL.UPDATE + "?id=" + phoneToEdit
-        : API_URL.CREATE;
+        ? "contacts/update?phone=" + phoneToEdit
+        : "contacts/create";
 
     $.post(actionUrl, {
         firstName, // shortcut from ES6 (key is the same as value variable name)
@@ -92,6 +91,7 @@ function displayContacts(contacts) {
 }
 
 function initEvents() {
+    //Update conact
     $("tbody").delegate("a.edit", "click", function() {
         phoneToEdit = this.getAttribute("data-id");
 
