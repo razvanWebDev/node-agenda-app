@@ -1,24 +1,25 @@
 # Agenda APP
 
-A simple app using node & express for managing phone contacts
+A simple app using NodeJS, Express AJAX & Jquery for managing phone contacts located in JSON file
 
 ## Live preview
 
 Open [agenda.html](https://razvanwebdev.github.io/node-agenda-app/public/agenda.html)
 
 ## Content
-- **CRUD** operations:
-    - **C**reate new contact
-    - **R**ead contacts from [contacts.json](public/data/contacts.json)
-    file
-    - **U**pdate contacts
-    - **D**elete contact
-- Search contact
+
+-   **CRUD** operations:
+    -   **C**reate new contact
+    -   **R**ead contacts from [contacts.json](public/data/contacts.json)
+        file
+    -   **U**pdate contacts
+    -   **D**elete contact
+-   Search contact
 
 ## Main links
 
- - [Express Nodejs](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/skeleton_website)
- - [Read & Write json files](http://stackabuse.com/reading-and-writing-json-files-with-node-js/)
+-   [Express Nodejs](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/skeleton_website)
+-   [Read & Write json files](http://stackabuse.com/reading-and-writing-json-files-with-node-js/)
 
 ## Steps to configure (1st time)
 
@@ -32,7 +33,9 @@ npm install
 ```
 
 ### Enable nodemon
+
 Edit **package.json** and add next lines:
+
 ```
 "scripts": {
     "start": "node ./bin/www",

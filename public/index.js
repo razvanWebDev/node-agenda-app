@@ -1,23 +1,23 @@
-var phoneToEdit = "";
-var firstName_input = document.querySelector("input[name=firstName]");
-var lastName_input = document.querySelector("input[name=lastName]");
-var phone_input = document.querySelector("input[name=phone]");
-var inputs = document.querySelectorAll("table tfoot tr td input");
+let phoneToEdit = "";
+const firstName_input = document.querySelector("input[name=firstName]");
+const lastName_input = document.querySelector("input[name=lastName]");
+const phone_input = document.querySelector("input[name=phone]");
+const requiredInputs = document.querySelectorAll(".required");
 
-function loadContacts() {
-    $.ajax("data/contacts.json").done(function(contacts) {
+const loadContacts = () => {
+    $.ajax("data/contacts.json").done(contacts => {
         window.globalContacts = contacts;
         displayContacts(contacts);
     });
-}
+};
 
-function saveContact() {
-    var firstName = firstName_input.value;
-    var lastName = lastName_input.value;
-    var phone = phone_input.value;
+const saveContact = () => {
+    const firstName = firstName_input.value;
+    const lastName = lastName_input.value;
+    const phone = phone_input.value;
 
-    if (firstName == "" || lastName == "" || phone == "") {
-        inputs.forEach(input => {
+    if (firstName == "" || phone == "") {
+        requiredInputs.forEach(input => {
             if (input.value == "") {
                 input.style.border = "1px solid red";
             } else {
@@ -25,74 +25,70 @@ function saveContact() {
             }
         });
     } else {
-        inputs.forEach(input => (input.style.border = "none"));
-        var actionUrl = phoneToEdit
+        requiredInputs.forEach(input => (input.style.border = "none"));
+        const actionUrl = phoneToEdit
             ? "contacts/update?phone=" + phoneToEdit
             : "contacts/create";
 
         $.post(actionUrl, {
-            firstName, // shortcut from ES6 (key is the same as value variable name)
+            firstName,
             lastName,
-            phone: phone // ES5 (key = value)
+            phone
         }).done(function(response) {
             phoneToEdit = "";
             firstName_input.value = "";
             lastName_input.value = "";
             phone_input.value = "";
-
             if (response.success) {
                 loadContacts();
             }
         });
     }
-}
+};
 
-function confirmDelete(delUrl) {
-    if (confirm("Are you sure you want to delete contact" + delUrl)) {
+const confirmDelete = delUrl => {
+    if (confirm("Are you sure you want to delete contact")) {
         document.location = delUrl;
     } else {
         loadContacts();
     }
-}
+};
 
-function displayContacts(contacts) {
-    var rows = contacts.map(function(contact) {
+const displayContacts = contacts => {
+    const rows = contacts.map(contact => {
         return `<tr data-id="${contact.phone}">
-            <td>${contact.firstName}</td>
-            <td>${contact.lastName}</td>
-            <td>${contact.phone}</td>
-            <td>
-            <a href=javascript:confirmDelete("/contacts/delete?phone=${contact.phone}")>&#10006;</a>
-                <a href="#" class="edit" data-id="${contact.phone}">&#9998;</a>
-            </td>
-        </tr>`;
+                    <td>${contact.firstName}</td>
+                    <td>${contact.lastName}</td>
+                    <td>${contact.phone}</td>
+                    <td>
+                        <a href=javascript:confirmDelete("/contacts/delete?phone=${contact.phone}") title="delete">&#10006;</a>
+                        <a href="#" class="edit" data-id="${contact.phone}" title="edit">&#9998;</a>
+                    </td>
+                </tr>`;
     });
 
     document.querySelector("tbody").innerHTML = rows.join("");
-}
+};
 
-function initEvents() {
+const initEvents = () => {
     //Update conact
     $("tbody").delegate("a.edit", "click", function() {
         phoneToEdit = this.getAttribute("data-id");
-
-        var contact = globalContacts.find(function(contact) {
-            return contact.phone == phoneToEdit;
-        });
-
-        document.querySelector("input[name=firstName]").value =
-            contact.firstName;
-        $("input[name=lastName]").val(contact.lastName);
-        $("input[name=phone]").val(contact.phone);
+        const contact = globalContacts.find(
+            contact => contact.phone == phoneToEdit
+        );
+        firstName_input.value = contact.firstName;
+        lastName_input.value = contact.lastName;
+        phone_input.value = contact.phone;
     });
 
     document.getElementById("search").addEventListener("input", dosearch);
-}
+};
 
-function dosearch() {
-    var value = this.value.toLowerCase();
+const dosearch = () => {
+    const value = this.value.toLowerCase();
 
-    var filteredContacts = globalContacts.filter(function(contact) {
+    const filteredContacts = globalContacts.filter(contact => {
         return (
             contact.firstName.toLowerCase().includes(value) ||
             contact.lastName.toLowerCase().includes(value) ||
@@ -101,7 +97,7 @@ function dosearch() {
     });
 
     displayContacts(filteredContacts);
-}
+};
 
 // - start app
 loadContacts();
