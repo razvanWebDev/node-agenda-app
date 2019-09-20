@@ -54,13 +54,6 @@ const confirmDelete = delUrl => {
     }
 };
 
-const editContact = phoneNr => {
-    const contact = globalContacts.find(contact => contact.phone == phoneNr);
-    firstName_input.value = contact.firstName;
-    lastName_input.value = contact.lastName;
-    phone_input.value = contact.phone;
-};
-
 const displayContacts = contacts => {
     const rows = contacts.map(contact => {
         return `<tr data-id="${contact.phone}">
@@ -69,7 +62,7 @@ const displayContacts = contacts => {
                     <td>${contact.phone}</td>
                     <td>
                         <a href=javascript:confirmDelete("/contacts/delete?phone=${contact.phone}") title="delete">&#10006;</a>
-                        <a href="#" onclick="editContact('${contact.phone}')" title="edit">&#9998;</a>
+                        <a href="#" class="edit" data-id="${contact.phone}" title="edit">&#9998;</a>
                     </td>
                 </tr>`;
     });
@@ -78,7 +71,17 @@ const displayContacts = contacts => {
 };
 
 const initEvents = () => {
-    //Search event listener
+    //Update conact
+    $("tbody").delegate("a.edit", "click", function() {
+        phoneToEdit = this.getAttribute("data-id");
+        const contact = globalContacts.find(
+            contact => contact.phone == phoneToEdit
+        );
+        firstName_input.value = contact.firstName;
+        lastName_input.value = contact.lastName;
+        phone_input.value = contact.phone;
+    });
+
     document.getElementById("search").addEventListener("input", dosearch);
 };
 
