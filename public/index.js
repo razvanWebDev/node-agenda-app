@@ -1,17 +1,5 @@
 var phoneToEdit = "";
 
-// var API_URL = {
-//     CREATE: "contacts/create",
-//     READ: "contacts",
-//     UPDATE: "contacts/update",
-//     DELETE:"contacts/delete",
-// };
-
-// //if we are on demo site
-// if(location.host === "razvanwebdev.github.io"){
-//     API_URL.READ = "data/contacts.json";
-// }
-
 var API_URL = {
     CREATE: "contacts/create",
     READ: "data/contacts.json",
@@ -27,51 +15,40 @@ function loadContacts() {
 }
 
 function saveContact() {
-    var firstName_input = document.querySelector("input[name=firstName]");
     var firstName = firstName_input.value;
-    var lastName_input = document.querySelector("input[name=lastName]");
     var lastName = lastName_input.value;
-    var phone_input = document.querySelector("input[name=phone]");
     var phone = phone_input.value;
+    var inputs = document.querySelectorAll("table tfoot tr td input");
 
-    if (firstName == "") {
-        firstName_input.style.border = "1px solid red";
-        return;
+    if (firstName == "" || lastName == "" || phone == "") {
+        inputs.forEach(input => {
+            if (input.value == "") {
+                input.style.border = "1px solid red";
+            } else {
+                input.style.border = "none";
+            }
+        });
     } else {
-        firstName_input.style.border = "none";
+        inputs.forEach(input => (input.style.border = "none"));
+        var actionUrl = phoneToEdit
+            ? "contacts/update?phone=" + phoneToEdit
+            : "contacts/create";
+
+        $.post(actionUrl, {
+            firstName, // shortcut from ES6 (key is the same as value variable name)
+            lastName,
+            phone: phone // ES5 (key = value)
+        }).done(function(response) {
+            phoneToEdit = "";
+            firstName_input.value = "";
+            lastName_input.value = "";
+            phone_input.value = "";
+
+            if (response.success) {
+                loadContacts();
+            }
+        });
     }
-    if (lastName == "") {
-        lastName_input.style.border = "1px solid red";
-        return;
-    } else {
-        lastName_input.style.border = "none";
-    }
-
-    if (phone == "") {
-        phone_input.style.border = "1px solid red";
-        return;
-    } else {
-        phone_input.style.border = "none";
-    }
-
-    var actionUrl = phoneToEdit
-        ? "contacts/update?phone=" + phoneToEdit
-        : "contacts/create";
-
-    $.post(actionUrl, {
-        firstName, // shortcut from ES6 (key is the same as value variable name)
-        lastName,
-        phone: phone // ES5 (key = value)
-    }).done(function(response) {
-        phoneToEdit = "";
-        firstName_input.value = "";
-        lastName_input.value = "";
-        phone_input.value = "";
-
-        if (response.success) {
-            loadContacts();
-        }
-    });
 }
 
 function displayContacts(contacts) {
