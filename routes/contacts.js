@@ -10,17 +10,13 @@ router.get("/", function(req, res, next) {
 // /contacts/delete?phone=1234
 router.get("/delete", function(req, res, next) {
     var phone = req.query.phone;
-
     var content = fs.readFileSync("public/data/contacts.json");
     var contacts = JSON.parse(content);
-
     var remainingContacts = contacts.filter(function(contact) {
         return contact.phone != phone;
     });
-
     content = JSON.stringify(remainingContacts, null, 2);
     fs.writeFileSync("public/data/contacts.json", content);
-
     res.redirect("/agenda.html");
 });
 
@@ -29,7 +25,6 @@ router.post("/create", function(req, res, next) {
     var firstName = req.body.firstName;
     var lastName = req.body.lastName;
     var phone = req.body.phone;
-
     var content = fs.readFileSync("public/data/contacts.json");
     var contacts = JSON.parse(content);
 
@@ -41,7 +36,6 @@ router.post("/create", function(req, res, next) {
 
     content = JSON.stringify(contacts, null, 2);
     fs.writeFileSync("public/data/contacts.json", content);
-
     res.json({ success: true });
 });
 
@@ -51,7 +45,6 @@ router.post("/update", function(req, res, next) {
     var firstName = req.body.firstName;
     var lastName = req.body.lastName;
     var phone = req.body.phone;
-
     var content = fs.readFileSync("public/data/contacts.json");
     var contacts = JSON.parse(content);
 
@@ -65,7 +58,6 @@ router.post("/update", function(req, res, next) {
 
     content = JSON.stringify(contacts, null, 2);
     fs.writeFileSync("public/data/contacts.json", content);
-
     res.json({ success: true });
 });
 

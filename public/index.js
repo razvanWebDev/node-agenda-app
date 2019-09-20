@@ -1,11 +1,8 @@
 var phoneToEdit = "";
-
-var API_URL = {
-    CREATE: "contacts/create",
-    READ: "data/contacts.json",
-    UPDATE: "contacts/update",
-    DELETE: "contacts/delete"
-};
+var firstName_input = document.querySelector("input[name=firstName]");
+var lastName_input = document.querySelector("input[name=lastName]");
+var phone_input = document.querySelector("input[name=phone]");
+var inputs = document.querySelectorAll("table tfoot tr td input");
 
 function loadContacts() {
     $.ajax("data/contacts.json").done(function(contacts) {
@@ -18,7 +15,6 @@ function saveContact() {
     var firstName = firstName_input.value;
     var lastName = lastName_input.value;
     var phone = phone_input.value;
-    var inputs = document.querySelectorAll("table tfoot tr td input");
 
     if (firstName == "" || lastName == "" || phone == "") {
         inputs.forEach(input => {
@@ -51,6 +47,14 @@ function saveContact() {
     }
 }
 
+function confirmDelete(delUrl) {
+    if (confirm("Are you sure you want to delete contact" + delUrl)) {
+        document.location = delUrl;
+    } else {
+        loadContacts();
+    }
+}
+
 function displayContacts(contacts) {
     var rows = contacts.map(function(contact) {
         return `<tr data-id="${contact.phone}">
@@ -58,7 +62,7 @@ function displayContacts(contacts) {
             <td>${contact.lastName}</td>
             <td>${contact.phone}</td>
             <td>
-            <a href="/contacts/delete?phone=${contact.phone}">&#10006;</a>
+            <a href=javascript:confirmDelete("/contacts/delete?phone=${contact.phone}")>&#10006;</a>
                 <a href="#" class="edit" data-id="${contact.phone}">&#9998;</a>
             </td>
         </tr>`;
@@ -75,7 +79,6 @@ function initEvents() {
         var contact = globalContacts.find(function(contact) {
             return contact.phone == phoneToEdit;
         });
-        console.log("edit", phoneToEdit, contact);
 
         document.querySelector("input[name=firstName]").value =
             contact.firstName;
@@ -101,6 +104,5 @@ function dosearch() {
 }
 
 // - start app
-
 loadContacts();
 initEvents();
